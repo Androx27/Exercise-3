@@ -1,0 +1,13 @@
+#footer {
+		position: relative;
+	   	left:0px;
+	   	bottom:0px;
+	   	height:-10px;
+	   	width:100%;
+	   	background:#000;
+		text-align: center;
+		margin: 0px;
+		padding: 10px;
+		color: #fff;
+		}
+#footer a:link {color: #fff;text-decoration: none;}

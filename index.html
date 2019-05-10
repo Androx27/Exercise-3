@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Tugas 3 JS - SWAPI API</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css.css">
+  </head>
+
+<body>
+    <div class="container">
+            <div class="responsive">
+                    <table class="table" id="tableplanet">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Height</th>
+                                <th scope="col">Mass</th>
+                                <th scope="col">Hair Color</th>
+                                <th scope="col">Skin Color</th>
+                                <th scope="col">Eye Color</th>
+                                <th scope="col">Birth Year</th>
+                                <th scope="col">Gender</th>
+                              </tr>
+                            </thead>
+                            <tbody id="tablebody">
+                            </tbody>
+                          </table>    
+                </div>
+    </div>
+  
+    <script>
+     $(document).ready(function () {
+            bikinTabel();
+        });
+        function bikinTabel() {
+            // for (let j = 0; j < people.length; j++){
+            //     hal = hal[j]
+            // }
+            var sumber = "https://swapi.co/api/people/?format=json";
+            $.ajax({
+                url: sumber,
+                data: "",
+                dataType: "json",
+                success: function (huehue) {
+                    var people = huehue.results;
+                    var isitable = "";
+                    for (let i = 0; i < people.length; i++) {
+                        isitable = `${isitable} <tr>
+                        <td>${people[i].name}</td>
+                        <td>${people[i].height}</td>
+                        <td>${people[i].mass}</td>
+                        <td>${people[i].hair_color}</td>
+                        <td>${people[i].skin_color}</td>
+                        <td>${people[i].eye_color}</td>
+                        <td>${people[i].birth_year}</td>
+                        <td>${people[i].gender}</td>
+                          </tr>`;
+                    }
+                    $("#tableplanet tbody").html(isitable);
+                    $('#tableplanet').DataTable();
+                },
+            })
+        }
+</script>
+</body>
+<footer id="footer">Designed by <a href="https://github.com/Androx27" target="_blank" style="color:orangered">Androx27</a></footer>
+</html>
